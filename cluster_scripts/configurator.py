@@ -109,7 +109,7 @@ if __name__ == '__main__':
     # replace the others params sql_conf.py
     for param in [work_mem, temp_buffers, effective_cache_size, maintenance_work_mem]:
         param_name = [ k for k,v in locals().items() if v is param][0]
-        replace_in_file(f'SET {param_name} TO ', f"SET {param_name} TO '{param}GB';", 'sql_conf.py')
+        replace_in_file(f'SET {param_name} TO ', f"SET {param_name} TO '{round(param,2)}GB';", 'sql_conf.py')
 
     # restart postgresql
     if os.name != 'nt':
