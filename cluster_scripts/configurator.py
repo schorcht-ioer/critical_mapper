@@ -75,15 +75,15 @@ if __name__ == '__main__':
     effective_cache_size = ram * 0.5  # - (work_mem * cpu)
 
 
-    print('\nThe following configurations wil be set:')
-    print('cpu_number:',cpu, 'GB')
-    print('work_mem:',work_mem, 'GB')
-    print('temp_buffers:',temp_buffers, 'GB')
-    print('effective_cache_size:',effective_cache_size, 'GB')
-    print('maintenance_work_mem:',maintenance_work_mem, 'GB')
+    print('\nThe following configurations are set:')
+    print('cpu_number:',cpu)
+    print('work_mem:',round(work_mem,2), 'GB')
+    print('temp_buffers:',round(temp_buffers,2), 'GB')
+    print('effective_cache_size:',round(effective_cache_size,2), 'GB')
+    print('maintenance_work_mem:',round(maintenance_work_mem,2), 'GB')
 
     print('\nThe following changes set in postgresql_conf:')
-    print('shared_buffers:',shared_buffers, 'GB')
+    print('shared_buffers:',round(shared_buffers,2), 'GB')
     print('max_wal_size: 16 GB')
     print('checkpoint_timeout: 120min')
 
