@@ -1,0 +1,27 @@
+version: '3.9'
+
+name: ${PROJECT_NAME}
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: postgis_with_cli/Dockerfile
+    container_name: cluster_postgis_container
+    restart: unless-stopped
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
+      - ./cluster_scripts:/cluster/cluster_scripts
+      - ./input/raster:/cluster/input/raster
+      - ./input/geojson:/cluster/input/geojson
+      - ./input/borders:/cluster/input/borders
+      - ./output:/cluster/output
+    ports:
+      - "5431:5432"
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - PYTHONUNBUFFERED=1
+
+
